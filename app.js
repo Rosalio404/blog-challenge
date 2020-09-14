@@ -19,8 +19,10 @@ app.use(express.static("public"));
 
 //GET
 app.get("/", function(req, res) {
-  res.render("home", {hSC: homeStartingContent});
-  console.log(posts)
+  res.render("home", {
+    hSC: homeStartingContent,
+    posts: posts
+  });
 });
 
 app.get("/about", function(req, res) {
