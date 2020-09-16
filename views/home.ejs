@@ -3,8 +3,9 @@
 <p><%= hSC %></p>
 
 <% posts.forEach(function (post) { %>
+	<% let truncatedPost = post.content.slice(0, 100) + " ..." %>
 	<h1><%=post.title%></h1>
-	 <p><%=post.content%></p>
+	<p><%=truncatedPost%> <a href="/posts/<%=post.title%>">Read more</a></p>
 <%  }) %>
 
 <%- include("partials/footer") %>

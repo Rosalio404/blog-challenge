@@ -41,7 +41,7 @@ app.get("/posts/:post", function(req, res) {
     // I was previously taking the direct object values and later
     // formatting them within the if statement
     const postObjTitle = _.kebabCase(postObj.title);
-    const postObjContent = postObj.content
+    const postObjContent = postObj.content;
     if (postObjTitle === postURL) {
       console.log("Match found!");
       res.render("post", {
@@ -51,7 +51,7 @@ app.get("/posts/:post", function(req, res) {
     } else {
       console.log("No match found.");
     }
-  })
+  });
 });
 
 app.get("/about", function(req, res) {
@@ -72,15 +72,11 @@ app.post("/compose", function(req,res) {
     title: req.body.postTitle,
     content: req.body.postBody
   }
-  posts.push(post)
-  res.redirect("/")
+  posts.push(post);
+  res.redirect("/");
 });
 
-
-
-
-
-
+//Server start
 app.listen(port, function() {
   console.log("Server started on port " + port);
 });
