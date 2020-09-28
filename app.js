@@ -18,7 +18,7 @@ mongoose.connect("mongodb://localhost/blogDB", {useNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log("We're connected!");
+  console.log("Connected to database");
 });
 
 //Schemas
@@ -74,11 +74,15 @@ app.get("/compose", function(req, res) {
 
 //POST
 app.post("/compose", function(req,res) {
-  const post = {
+  const post = new Post({
     title: req.body.postTitle,
     content: req.body.postBody
-  }
-  posts.push(post);
+  });
+  post.save(function (err) {
+    if (err) {
+      console.error(err);
+    }
+  });
   res.redirect("/");
 });
 
