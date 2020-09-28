@@ -86,11 +86,12 @@ app.post("/compose", function(req,res) {
     content: req.body.postBody
   });
   post.save(function (err) {
-    if (err) {
+    if (!err) {
+      res.redirect("/");
+    } else {
       console.error(err);
     }
   });
-  res.redirect("/");
 });
 
 //Server start
