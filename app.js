@@ -27,19 +27,8 @@ app.get("/", function(req, res) {
 });
 
 app.get("/posts/:post", function(req, res) {
-  // Original for loop to test each object in the
-  // posts array against the postURL parameter
-  // for (let i = 0; i < posts.length; i++) {
-  //   console.log(posts[i].title.includes(postURL));
-  // }
-  // New forEach method which acheives the same effect
-  // const postURL = req.params.post;
   const postURL = _.kebabCase(req.params.post);
   posts.forEach(function(postObj) {
-    // const postObjTitle = postObj.title;
-    // if (_.kebabCase(postObjTitle) === _.kebabCase(postURL)) {
-    // I was previously taking the direct object values and later
-    // formatting them within the if statement
     const postObjTitle = _.kebabCase(postObj.title);
     const postObjContent = postObj.content;
     if (postObjTitle === postURL) {
